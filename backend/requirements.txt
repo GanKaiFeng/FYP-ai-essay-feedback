@@ -1,0 +1,9 @@
+flask
+flask-cors
+openai
+python-dotenv
+supabase
+paddlepaddle
+paddleocr>=2.0.1
+anthropic
+pymupdf
