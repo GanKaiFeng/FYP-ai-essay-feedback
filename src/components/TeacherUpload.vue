@@ -121,9 +121,9 @@
           <div class="form-group">
             <label for="model">{{ t('upload.model') }}</label>
             <select id="model" v-model="form.model">
-              <option value="gpt-4">GPT-4</option>
-              <option value="claude-4">Claude 4</option>
-              <option value="qwen-3">Qwen 3</option>
+              <option value="gpt-4">GPT 5 Mini</option>
+              <option value="claude-4">Claude Sonnet 4.5</option>
+              <option value="gemini-3">Gemini 3 Flash</option>
             </select>
           </div>
 
