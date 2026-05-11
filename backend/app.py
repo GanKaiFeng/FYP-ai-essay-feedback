@@ -11,6 +11,7 @@ from paddleocr import PaddleOCR
 import base64
 import io
 import anthropic
+from google import genai
 
 # Load environment variables from .env file
 load_dotenv()
@@ -20,6 +21,9 @@ gpt_client = openai.OpenAI(api_key=os.getenv("OPENAI_TEST_API_KEY"))
 
 # Initialise Claude key
 claude_client = anthropic.Anthropic(api_key=os.getenv('CLAUDE_API_KEY'))
+
+# Initialise Gemini key
+gemini_client = genai.Client(api_key=os.getenv('GEMINI_API_KEY'))
 
 app = Flask(__name__)
 CORS(app)
@@ -59,8 +63,13 @@ def get_feedback():
     """
 
     try:
-        if model == "qwen-3":
-            print("hi im cuewen", flush=True)
+        if model == "gemini-3":
+            response = gemini_client.models.generate_content(
+            model="gemini-3-flash-preview",
+            contents=prompt,
+        )
+            model = "gemini-3-flash"
+            reply = response.text
         elif model == "claude-4":
             message = claude_client.messages.create(
                 max_tokens = 20000,
